@@ -1,5 +1,5 @@
 {
-  "url" : "",
+  "url" : "jdbc:mysql://localhost:3306/testgoitdb",
   "username" : "",
   "password" : ""
 }
