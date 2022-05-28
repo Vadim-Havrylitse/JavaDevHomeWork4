@@ -1,8 +1,8 @@
 # Default ignored files
 /shelf/
-/.idea/workspace.xml
 /.idea
-h2_config.json
-mySql_config.json
 /target/
-*.json
+
+src/main/resources/mySql_config.json
+src/main/resources/h2_config.json
+/src/main/resources/
