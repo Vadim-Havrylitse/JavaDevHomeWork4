@@ -3,7 +3,7 @@ package states;
 import application.Application;
 
 public class StartState extends State{
-    private String[] MESSAGE_START = {"\n***MAIN MENU***\nchoose the right point:",
+    private final String[] MESSAGE_START = {"***MAIN MENU***\nchoose the right point:",
             "press 1 -> CRUD",
             "press 2 -> Home Task Query",
             "press 0 -> EXIT APP"};
