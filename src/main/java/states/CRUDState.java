@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class CRUDState extends State{
     private final DataBaseService dataBaseService;
-    private final String[] MESSAGE_CRUD = {"\n***CRUD MENU***\nchoose the right point:",
+    private final String[] MESSAGE_CRUD = {"***CRUD MENU***\nchoose the right point:",
             "press 1 -> Create",
             "press 2 -> Read data",
             "press 3 -> Update data",

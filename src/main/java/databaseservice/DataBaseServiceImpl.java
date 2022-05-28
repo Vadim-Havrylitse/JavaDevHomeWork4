@@ -29,7 +29,6 @@ public class DataBaseServiceImpl implements DataBaseService{
     public void readData(String inputSqlQuery) throws SQLException {
         ResultSet resultSet = statement.executeQuery(inputSqlQuery);
         printQueryResult(resultSet);
-        System.out.println(MASSAGE_OF_SUCCESSFUL);
     }
 
     @Override

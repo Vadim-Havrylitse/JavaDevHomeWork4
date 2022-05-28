@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class UtilQueryState extends State{
     private final DataBaseService dataBaseService;
 
-    private final String[] MESSAGE_UTIL_QUERY = {"\n***QUERY FROM HOME TASK***\nchoose the right point:",
+    private final String[] MESSAGE_UTIL_QUERY = {"***QUERY FROM HOME TASK***\nchoose the right point:",
             "press 1 -> SUM(salary) in some project",
             "press 2 -> List all developers in some project",
             "press 3 -> List all Java-developers",

@@ -38,8 +38,9 @@ public abstract class State {
     }
 
     protected void checkForContinueWhenSQLExceptionCatch(){
-        System.out.println("!!!SOMETHING WRONG WITH SQL QUERY!!! Do you want return to main menu YES\\NO?");
-        if (scanner.nextLine().equalsIgnoreCase("yes")){
+        System.out.println("!!!SOMETHING WRONG WITH SQL QUERY!!! Do you want return to main menu Y\\N?");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")){
             returnToStartState();
         }
 
