@@ -2,4 +2,5 @@
 /shelf/
 /workspace.xml
 /.idea
-
+/src/main/resources/h2_config.json
+/src/main/resources/mySql_config.json
