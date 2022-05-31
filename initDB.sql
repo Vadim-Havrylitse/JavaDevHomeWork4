@@ -1,5 +1,3 @@
-CREATE DATABASE testgoitdb;
-
 CREATE TABLE developers (
 	id bigint AUTO_INCREMENT,
     name varchar(20) NOT NULL,
@@ -23,9 +21,9 @@ CREATE TABLE projects (
     name varchar(50) UNIQUE,
     budget bigint NOT NULL, 
     release_date date,
-    companies_id bigint NOT NULL,
-    customers_id bigint NOT NULL,
-    cost bigint not NULL,
+    companies_id bigint,
+    customers_id bigint,
+    cost bigint NOT NULL,
     PRIMARY KEY(id)
     );
     
@@ -47,23 +45,23 @@ CREATE TABLE customers (
 CREATE TABLE developers_projects (
 	developers_id bigint,
     projects_id bigint,
-    FOREIGN KEY (projects_id) REFERENCES projects(id),
-    FOREIGN KEY (developers_id) REFERENCES developers(id)
+    FOREIGN KEY (projects_id) REFERENCES projects(id) ON DELETE CASCADE,
+    FOREIGN KEY (developers_id) REFERENCES developers(id) ON DELETE CASCADE
     );
     
 CREATE TABLE developers_skills (
 	developers_id bigint,
     skills_id bigint,
-    FOREIGN KEY (skills_id) REFERENCES skills(id),
-    FOREIGN KEY (developers_id) REFERENCES developers(id)
+    FOREIGN KEY (skills_id) REFERENCES skills(id) ON DELETE CASCADE,
+    FOREIGN KEY (developers_id) REFERENCES developers(id) ON DELETE CASCADE
     );
 
 ALTER TABLE projects
-    ADD FOREIGN KEY (customers_id) REFERENCES customers(id);
+    ADD FOREIGN KEY (customers_id) REFERENCES customers(id) ON DELETE SET NULL;
 
 ALTER TABLE projects
-    ADD FOREIGN KEY (companies_id) REFERENCES companies(id);
+    ADD FOREIGN KEY (companies_id) REFERENCES companies(id) ON DELETE SET NULL;
 
 ALTER TABLE developers
-    ADD FOREIGN KEY (companies_id) REFERENCES companies(id);
+    ADD FOREIGN KEY (companies_id) REFERENCES companies(id) ON DELETE SET NULL;
 

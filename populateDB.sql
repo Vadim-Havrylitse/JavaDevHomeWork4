@@ -15,12 +15,9 @@ INSERT INTO skills (industry, degree)
 	('Java', 'Middle'),
     ('JS', 'Middle'),
     ('C++', 'Senior'),
-    ('C++', 'Middle');
-    
-INSERT INTO skills (industry)
-	VALUES
-	('Java'),
-    ('JS');
+    ('C++', 'Middle'),
+    ('Java', 'Junior'),
+    ('JS', 'Junior');
     
 INSERT INTO projects
 	VALUES

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class UtilQueryState extends State{
     private final DataBaseService dataBaseService;
 
-    private final String[] MESSAGE_UTIL_QUERY = {"***QUERY FROM HOME TASK***\nchoose the right point:",
+    private static final String[] MESSAGE_UTIL_QUERY = {"***QUERY FROM HOME TASK***\nchoose the right point:",
             "press 1 -> SUM(salary) in some project",
             "press 2 -> List all developers in some project",
             "press 3 -> List all Java-developers",
@@ -16,7 +16,7 @@ public class UtilQueryState extends State{
             "press 5 -> List project with specific format",
             "press 0 -> MAIN MENU"};
 
-    private final String queryForSumSalaryInSomeProject = "SELECT projects.name, SUM(salary) " +
+    private static final String queryForSumSalaryInSomeProject = "SELECT projects.name, SUM(salary) " +
             "FROM projects " +
             "LEFT JOIN developers_projects " +
             "ON id = projects_id " +
@@ -25,13 +25,13 @@ public class UtilQueryState extends State{
             "WHERE projects.id = %s "+
             "GROUP BY projects.name;";
 
-    private final String queryForListAllDevInSomeProject = "SELECT developers.* " +
+    private static final String queryForListAllDevInSomeProject = "SELECT developers.* " +
             "FROM developers_projects " +
             "LEFT JOIN developers " +
             "ON developers_id = id " +
             "WHERE projects_id = %s;";
 
-    private final String queryForListAllJavaDev = "SELECT developers.*" +
+    private static final String queryForListAllJavaDev = "SELECT developers.*" +
             "FROM developers " +
             "LEFT JOIN developers_skills " +
             "ON developers_id = developers.id " +
@@ -39,14 +39,14 @@ public class UtilQueryState extends State{
             "ON skills_id = skills.id " +
             "WHERE skills.industry = 'Java';";
 
-    private final String queryForListAllMiddleDev = "SELECT developers.*" +
+    private static final String queryForListAllMiddleDev = "SELECT developers.*" +
             "FROM developers " +
             "LEFT JOIN developers_skills " +
             "ON developers_id = developers.id " +
             "LEFT JOIN skills " +
             "ON skills_id = skills.id " +
             "WHERE skills.degree = 'Middle';";
-    private final String queryForListAllProjectWithSpecFormat = "SELECT projects.release_date, projects.name, COUNT(developers_id) " +
+    private static final String queryForListAllProjectWithSpecFormat = "SELECT projects.release_date, projects.name, COUNT(developers_id) " +
             "FROM projects " +
             "LEFT JOIN developers_projects " +
             "ON developers_id = id " +
@@ -65,28 +65,28 @@ public class UtilQueryState extends State{
                 case 1:
                     System.out.println("Write number of project:");
                     String temp = scanner.nextLine();
-                    dataBaseService.readData(String.format(queryForSumSalaryInSomeProject, temp));
+                    dataBaseService.readAndPrintData(String.format(queryForSumSalaryInSomeProject, temp));
                     break;
                 case 2:
                     System.out.println("Write number of project:");
                     String temp2 = scanner.nextLine();
-                    dataBaseService.readData(String.format(queryForListAllDevInSomeProject, temp2));
+                    dataBaseService.readAndPrintData(String.format(queryForListAllDevInSomeProject, temp2));
                     break;
                 case 3:
-                    dataBaseService.readData(queryForListAllJavaDev);
+                    dataBaseService.readAndPrintData(queryForListAllJavaDev);
                     break;
                 case 4:
-                    dataBaseService.readData(queryForListAllMiddleDev);
+                    dataBaseService.readAndPrintData(queryForListAllMiddleDev);
                     break;
                 case 5:
-                    dataBaseService.readData(queryForListAllProjectWithSpecFormat);
+                    dataBaseService.readAndPrintData(queryForListAllProjectWithSpecFormat);
                     break;
                 case 0:
                     returnToStartState();
                     break;
             }
         }catch (SQLException e) {
-                checkForContinueWhenSQLExceptionCatch();
+                printMessageWhenSQLExceptionCatch(e.getMessage());
         }
     }
 }

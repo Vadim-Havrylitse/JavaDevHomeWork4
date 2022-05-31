@@ -37,12 +37,7 @@ public abstract class State {
         System.exit(+100500);
     }
 
-    protected void checkForContinueWhenSQLExceptionCatch(){
-        System.out.println("!!!SOMETHING WRONG WITH SQL QUERY!!! Do you want return to main menu Y\\N?");
-        String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")){
-            returnToStartState();
-        }
-
+    protected void printMessageWhenSQLExceptionCatch(String error){
+        System.err.println("-- SOMETHING WRONG WITH SQL QUERY!!!\n-- " + error);
     }
 }
