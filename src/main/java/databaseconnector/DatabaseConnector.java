@@ -9,7 +9,7 @@ public interface DatabaseConnector {
     Connection getConnection() throws SQLException;
 
     static DatabaseConnector initDB(DBEnum db){
-        return AbstractDatabaseConnector.initDbWithConfig(db);
+        return AbstractDatabaseConnector.initDbWithConfigAndMigrate(db);
     }
 
 
